@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircularIconView">
+        <attr name="iconText" format="string" />
+        <attr name="nameText" format="string" />
+    </declare-styleable>
+</resources>
