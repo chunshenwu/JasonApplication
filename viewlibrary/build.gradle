@@ -17,6 +17,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        libraryVariants.all { variant ->
+            def libName = this.getName()
+            variant.outputs.all {
+                def buildType = variant.variantData.variantConfiguration.buildType.name
+                outputFileName = "${libName}-${buildType}-${defaultConfig.versionCode}.aar"
+            }
+        }
     }
 
 }
@@ -29,12 +37,14 @@ static def getAutoDefinedVersion(type) {
     int build = process.getText().toInteger()
 
     if ("code" == type) {
-        major * 10000 + minor * 1000
+//        major * 10000 + minor * 1000 +
+        build
     } else if ("name" == type) {
         process = "git describe --always".execute()
         process.waitFor()
         String sha1 = process.getText().trim()
-        "$major.$minor.$build.$sha1"
+        "v$major.$minor.$build $sha1"
+//        v1.0.5 e542f3e
     }
 }
 
