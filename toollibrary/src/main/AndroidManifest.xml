@@ -1,2 +1,6 @@
-<manifest package="com.gmboy.android.toollibrary"
-          xmlns:android="http://schemas.android.com/apk/res/android"/>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gmboy.android.toollibrary"
+    android:minSdkVersion="${minSdkVersion}"
+    android:targetSdkVersion="${targetSdkVersion}"
+    />
