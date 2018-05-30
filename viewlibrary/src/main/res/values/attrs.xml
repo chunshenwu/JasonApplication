@@ -4,4 +4,12 @@
         <attr name="iconText" format="string" />
         <attr name="nameText" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="TabPoint">
+        <attr name="pointColor" format="color" />
+        <attr name="pointWidth" format="dimension" />
+        <attr name="pointHeight" format="dimension" />
+        <attr name="pointUnselAlpha" format="float" />
+    </declare-styleable>
+
 </resources>

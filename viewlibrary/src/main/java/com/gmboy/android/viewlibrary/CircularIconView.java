@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.TextView;gi
+import android.widget.TextView;
 
 public class CircularIconView extends RelativeLayout {
 

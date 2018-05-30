@@ -6,9 +6,8 @@ android {
     defaultConfig {
         minSdkVersion 23
         targetSdkVersion 27
-        versionCode 3
-        versionName "3.0"
-
+        versionCode getAutoDefinedVersion("code")
+        versionName getAutoDefinedVersion("name")
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -20,6 +19,23 @@ android {
         }
     }
 
+}
+
+static def getAutoDefinedVersion(type) {
+    int major = 1
+    int minor = 0
+    Process process = "git rev-list --count HEAD".execute()
+    process.waitFor()
+    int build = process.getText().toInteger()
+
+    if ("code" == type) {
+        major * 10000 + minor * 1000
+    } else if ("name" == type) {
+        process = "git describe --always".execute()
+        process.waitFor()
+        String sha1 = process.getText().trim()
+        "$major.$minor.$build.$sha1"
+    }
 }
 
 dependencies {
