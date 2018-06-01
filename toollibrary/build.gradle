@@ -29,7 +29,28 @@ android {
             }
         }
     }
+}
 
+apply plugin: 'maven'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://104.238.148.8:8081/repository/maven-releases/") {
+                authentication(userName: "admin", password: "admin123")
+            }
+
+            Process process = "git rev-list --count HEAD".execute()
+            process.waitFor()
+            int build = process.getText().toInteger()
+            String delCommand = "rm ./build/outputs/aar/toollibrary-debug-" + build + ".aar "
+            Process delDebugAarProcess = delCommand.execute()
+            delDebugAarProcess.waitFor()
+
+            pom.version = build
+            pom.artifactId = "toollibrary"
+            pom.groupId = "com.gmboy"
+        }
+    }
 }
 
 static def getAutoDefinedVersion(type) {

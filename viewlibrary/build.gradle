@@ -29,6 +29,30 @@ android {
 
 }
 
+
+apply plugin: 'maven'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://104.238.148.8:8081/repository/maven-releases/") {
+                authentication(userName: "admin", password: "admin123")
+            }
+
+            Process process = "git rev-list --count HEAD".execute()
+            process.waitFor()
+            int build = process.getText().toInteger()
+            String delCommand = "rm ./build/outputs/aar/viewlibrary-debug-" + build + ".aar ";
+            Process delDebugAarProcess = delCommand.execute()
+            delDebugAarProcess.waitFor()
+
+            pom.version = build
+            pom.artifactId = "viewlibrary"
+            pom.groupId = "com.gmboy"
+        }
+    }
+}
+
+
 static def getAutoDefinedVersion(type) {
     int major = 1
     int minor = 0
