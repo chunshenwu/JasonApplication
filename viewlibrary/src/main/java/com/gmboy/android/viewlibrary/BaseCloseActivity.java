@@ -32,15 +32,15 @@ public class BaseCloseActivity extends AppCompatActivity {
         setContentView(toolbarRootView);
     }
 
-    private void onClickClose(View view) {
+    public void onClickClose(View view) {
         finish();
     }
 
-    private TextView getTitleTextView() {
+    public TextView getTitleTextView() {
         return mCloseTextView;
     }
 
-    private void setTitleTextSupportTouch() {
+    public void setTitleTextSupportTouch() {
         mCloseTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
