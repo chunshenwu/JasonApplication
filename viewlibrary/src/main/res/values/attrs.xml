@@ -6,10 +6,17 @@
     </declare-styleable>
 
     <declare-styleable name="TabPoint">
-        <attr name="pointColor" format="color" />
         <attr name="pointWidth" format="dimension" />
         <attr name="pointHeight" format="dimension" />
-        <attr name="pointUnselAlpha" format="float" />
+
+        <attr name="pointColor" format="color" />
+        <attr name="pointSelAlpha" format="float" />
+        <attr name="pointUnSelAlpha" format="float" />
+
+        <attr name="pointUseBackground" format="boolean" />
+
+        <attr name="pointSelBackground" format="integer" />
+        <attr name="pointUnSelBackground" format="integer" />
     </declare-styleable>
 
 </resources>
