@@ -13,7 +13,7 @@ public class AppUtil {
         context.startActivity(intent);
     }
 
-    private static void mail(Activity activity, String address, String subject, String body) {
+    public static void mail(Activity activity, String address, String subject, String body) {
         Uri uri = Uri.parse("mailto:" + address);
         String[] email = {address};
         Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
